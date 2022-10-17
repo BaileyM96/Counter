@@ -7,13 +7,19 @@ var value = document.querySelector('#value');
 
 buttons.forEach(function (btn) {
     btn.addEventListener('click', function (e){
-        var styles = e.currentTarget.classList; //This might throw an error later
+        var styles = e.currentTarget.classList; 
         if(styles.contains('decrease')) {
             count--;
         } else if(styles.contains('increase')) {
             count++;
-        } else {
-            
+        } else { //This resets the counter
+            count = 0;
+        }
+        if (count > 0) {
+            value.style.color = 'green';
+        }
+        if(count < 0) {
+            value.style.color = 'red';
         }
         value.textContent = count;
     });
